@@ -9,7 +9,7 @@
 
 
     <Button
-        android:id="@+id/test"
+        android:id="@+id/cta"
         android:layout_width="250dp"
         android:layout_height="70dp"
         android:layout_marginBottom="50dp"
@@ -80,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="100dp"
-        app:layout_constraintBottom_toTopOf="@+id/test"
+        app:layout_constraintBottom_toTopOf="@+id/cta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
