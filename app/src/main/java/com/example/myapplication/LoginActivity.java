@@ -7,7 +7,7 @@ import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
 
-public class Login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
