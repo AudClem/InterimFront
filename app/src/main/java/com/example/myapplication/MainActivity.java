@@ -15,8 +15,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-//        Intent intent = new Intent (this, HomeActivity.class);
-        Intent intent = new Intent (this, RegisterActivity.class);
+        Intent intent = new Intent (this, HomeActivity.class);
         startActivity(intent);
     }
 }

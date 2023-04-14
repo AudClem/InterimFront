@@ -94,6 +94,7 @@ public class Request {
                 while ((responseLine = br.readLine()) != null) {
                     response.append(responseLine.trim());
                 }
+                System.out.println(response.toString());
                 return new Response( responseCode, new JSONObject( response.toString() ) );
 
             } catch (JSONException e) {
