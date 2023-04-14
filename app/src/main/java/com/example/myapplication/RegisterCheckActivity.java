@@ -24,7 +24,7 @@ public class RegisterCheckActivity extends AppCompatActivity {
         });
 
         cta_complete_profile.setOnClickListener( event -> {
-            Intent intent = new Intent (this, SelectUserType.class);
+            Intent intent = new Intent (this, SelectUserTypeActivity.class);
             startActivity(intent);
         });
     }
