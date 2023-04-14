@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 
@@ -23,9 +24,8 @@ public class RegisterCheckActivity extends AppCompatActivity {
         });
 
         cta_complete_profile.setOnClickListener( event -> {
-            // TO DO SELECT USER TYPE
-//            Intent intent = new Intent (this, LoginActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent (this, SelectUserType.class);
+            startActivity(intent);
         });
     }
 }
