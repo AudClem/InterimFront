@@ -105,4 +105,31 @@ public class Request {
             throw new RuntimeException(e);
         }
     }
+
+    static public Response get( String url ){
+        try {
+            URL object = new URL( url );
+
+            HttpURLConnection con = (HttpURLConnection) object.openConnection();
+
+            int responseCode = con.getResponseCode();
+            if( responseCode == 204 ) return new Response( responseCode, null );
+
+            try( BufferedReader br = new BufferedReader( new InputStreamReader( con.getInputStream(), StandardCharsets.UTF_8) ) ) {
+                StringBuilder response = new StringBuilder();
+                String responseLine;
+                while( (responseLine = br.readLine()) != null ){
+                    response.append(responseLine.trim());
+                }
+                return new Response( responseCode, new JSONObject( response.toString() ) );
+
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }
