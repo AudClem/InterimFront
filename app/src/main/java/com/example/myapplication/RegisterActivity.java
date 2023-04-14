@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
@@ -35,6 +36,9 @@ public class RegisterActivity extends AppCompatActivity {
             if( res.getCode() == 201 ){
                 userID = res.getString("id");
                 System.out.println("id : " + userID );
+
+                Intent intent = new Intent (this, RegisterCheckActivity.class);
+                startActivity(intent);
             }
 
         });
