@@ -3,12 +3,14 @@ package com.example.myapplication;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -70,7 +72,7 @@ public class Request {
 
     static public Response post( String url, Request.Body data ){
         try {
-            URL object=new URL( url );
+            URL object = new URL( url );
 
             HttpURLConnection con = (HttpURLConnection) object.openConnection();
             con.setDoOutput( true );
