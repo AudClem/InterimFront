@@ -15,6 +15,12 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".RegisterUserTypeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CustomListView"
+            android:exported="false" />
+        <activity
             android:name=".SelectUserTypeActivity"
             android:exported="false" />
         <activity

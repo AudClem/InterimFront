@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 public class SelectUserTypeActivity extends AppCompatActivity {
 
@@ -16,17 +17,22 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_select_user_type);
 
+        Intent intent = new Intent (this, RegisterUserTypeActivity.class);
+
         ConstraintLayout seeker = findViewById(R.id.seeker);
         ConstraintLayout employer = findViewById(R.id.employer);
         ConstraintLayout agency = findViewById(R.id.agency);
 
         Button next = findViewById(R.id.cta_next);
 
+        ImageView leftArrow = findViewById(R.id.previous);
+
         seeker.setOnClickListener( event -> {
             seeker.setBackgroundResource(R.drawable.green_corners);
             employer.setBackgroundResource(R.drawable.corners);
             agency.setBackgroundResource(R.drawable.corners);
             next.setVisibility(View.VISIBLE);
+            intent.putExtra("choice", 1);
         });
 
         employer.setOnClickListener( event -> {
@@ -34,6 +40,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
             employer.setBackgroundResource(R.drawable.green_corners);
             agency.setBackgroundResource(R.drawable.corners);
             next.setVisibility(View.VISIBLE);
+            intent.putExtra("choice", 2);
         });
 
         agency.setOnClickListener( event -> {
@@ -41,12 +48,15 @@ public class SelectUserTypeActivity extends AppCompatActivity {
             employer.setBackgroundResource(R.drawable.corners);
             agency.setBackgroundResource(R.drawable.green_corners);
             next.setVisibility(View.VISIBLE);
+            intent.putExtra("choice", 3);
         });
 
         next.setOnClickListener( event -> {
-//            TODO SUITE REGISTER
-//            Intent intent = new Intent (this, HomeActivity.class);
-//            startActivity(intent);
+            startActivity(intent);
+        });
+
+        leftArrow.setOnClickListener( event -> {
+            finish();
         });
 
 
