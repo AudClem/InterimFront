@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -27,7 +26,7 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         List<Integer> sousnomListImg = new ArrayList<>();
 
         TextView title = findViewById(R.id.registerAccount);
-        ImageView leftArrow = findViewById(R.id.imageView);
+        ImageView leftArrow = findViewById(R.id.back);
 
         Bundle bundle = getIntent().getExtras();
         int choice = bundle.getInt("choice");

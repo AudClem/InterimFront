@@ -2,10 +2,13 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -28,9 +31,18 @@ public class LoginActivity extends AppCompatActivity {
             System.out.println( res.getString("message") );
 
             if( res.getCode() == 200 ){
-                //TO DO REDIRECTION
+                Intent intent = new Intent (this, OfferActivity.class);
+                intent.putExtra("userID", res.getString("id") );
+                startActivity(intent);
             }
 
+        });
+
+        TextView register = findViewById(R.id.register);
+
+        register.setOnClickListener( event -> {
+            Intent intent = new Intent (this, RegisterActivity.class);
+            startActivity(intent);
         });
 
     }
