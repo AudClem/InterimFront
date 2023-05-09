@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -35,14 +36,18 @@ public class RegisterActivity extends AppCompatActivity {
             System.out.println("Message : " + res.getString("message") );
             if( res.getCode() == 201 ){
                 userID = res.getString("id");
-                System.out.println("id : " + userID );
 
                 Intent intent = new Intent (this, RegisterCheckActivity.class);
+                intent.putExtra("userID", userID );
                 startActivity(intent);
             }
-
         });
 
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener( event -> {
+            onBackPressed();
+        });
     }
 
     private Request.Response signUp( String username, String email, String password ){

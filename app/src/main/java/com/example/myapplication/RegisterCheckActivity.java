@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class RegisterCheckActivity extends AppCompatActivity {
 
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,14 +18,20 @@ public class RegisterCheckActivity extends AppCompatActivity {
         Button cta_browsing = findViewById(R.id.cta_browsing);
         Button cta_complete_profile = findViewById(R.id.cta_complete_profile);
 
+        Bundle extras = getIntent().getExtras();
+        if( extras != null ){
+            userID = extras.getString("userID");
+        }
+
         cta_browsing.setOnClickListener( event -> {
-            // TO DO START OFFER ACTIVITY
-//            Intent intent = new Intent (this, LoginActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent (this, OfferActivity.class);
+            intent.putExtra("userID", userID );
+            startActivity(intent);
         });
 
         cta_complete_profile.setOnClickListener( event -> {
             Intent intent = new Intent (this, SelectUserTypeActivity.class);
+            intent.putExtra("userID", userID );
             startActivity(intent);
         });
     }

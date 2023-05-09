@@ -59,7 +59,7 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         listv.setAdapter(customBaseAdapter);
 
         leftArrow.setOnClickListener( event -> {
-            finish();
+            onBackPressed();
         });
 
     }
