@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -22,6 +23,9 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         List<String> nomList = new ArrayList<>();
         List<Integer> nomListImg = new ArrayList<>();
 
+        List<String> sousnomList = new ArrayList<>();
+        List<Integer> sousnomListImg = new ArrayList<>();
+
         TextView title = findViewById(R.id.registerAccount);
         ImageView leftArrow = findViewById(R.id.imageView);
 
@@ -33,6 +37,9 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
             title.setText("Job Seeker");
             nomList.addAll(Arrays.asList("First Name", "Last Name", "Job Title", "Location", "Start", "Employer"));
             nomListImg.addAll(Arrays.asList(R.drawable.user, R.drawable.user, R.drawable.bag, R.drawable.location, R.drawable.calendar, R.drawable.employersvg));
+            sousnomList.addAll(Arrays.asList("Start", "End"));
+            sousnomListImg.addAll(Arrays.asList(R.drawable.calendar, R.drawable.calendar));
+
         }
         else if (choice == 2) {
             //Employer
@@ -49,7 +56,7 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
         ListView listv;
         listv = (ListView) findViewById(R.id.customListView);
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), nomList, nomListImg);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), nomList, nomListImg, sousnomList, sousnomListImg);
         listv.setAdapter(customBaseAdapter);
 
         leftArrow.setOnClickListener( event -> {
