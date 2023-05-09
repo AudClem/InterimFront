@@ -17,9 +17,8 @@ public class HomeActivity extends AppCompatActivity {
         Button cta = findViewById(R.id.cta);
 
         cta.setOnClickListener( event -> {
-            // TO DO START OFFER ACTIVITY
-//            Intent intent = new Intent (this, LoginActivity.class);
-//            startActivity(intent);
+            Intent intent = new Intent (this, LoginActivity.class);
+            startActivity(intent);
         });
     }
 }
