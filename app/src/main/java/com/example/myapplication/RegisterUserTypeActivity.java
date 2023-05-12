@@ -2,7 +2,9 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -30,6 +32,8 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
         Bundle bundle = getIntent().getExtras();
         int choice = bundle.getInt("choice");
+
+        Button cta_signUp = findViewById(R.id.cta);
 
         if(choice == 1) {
             //Job Seeker
@@ -60,6 +64,11 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
         leftArrow.setOnClickListener( event -> {
             onBackPressed();
+        });
+
+        cta_signUp.setOnClickListener( event -> {
+            Intent intent = new Intent (this, RegisterCheckFinalActivity.class);
+            startActivity(intent);
         });
 
     }

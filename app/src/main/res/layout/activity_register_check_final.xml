@@ -118,7 +118,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/green_dot" />
+            app:srcCompat="@drawable/grey_dot" />
 
         <ImageView
             android:id="@+id/second_dot"
@@ -142,7 +142,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/second_dot"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/grey_dot" />
+            app:srcCompat="@drawable/green_dot" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
