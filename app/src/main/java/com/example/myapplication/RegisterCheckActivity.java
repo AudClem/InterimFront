@@ -15,7 +15,7 @@ public class RegisterCheckActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_register_check);
 
-        Button cta_browsing = findViewById(R.id.cta_browsing);
+        Button cta_browsing = findViewById(R.id.cta_profile);
         Button cta_complete_profile = findViewById(R.id.cta_complete_profile);
 
         Bundle extras = getIntent().getExtras();

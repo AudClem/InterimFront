@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/roboto"
-                android:text="You can now start browsing job offers or you can finish creating your profile by choosing an user type."
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed lacinia neque sed leo varius interdum."
                 android:textAlignment="center"
                 android:textColor="@color/black"
                 android:textSize="16dp"
@@ -72,7 +72,7 @@
             android:id="@+id/constraintLayout5"
             android:layout_width="306dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="165dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,25 +84,7 @@
                 android:layout_height="70dp"
                 android:backgroundTint="#47AE7A"
                 android:fontFamily="@font/roboto_bold"
-                android:text="START BROWSING"
-                android:textAppearance="@style/TextAppearance.AppCompat"
-                android:textSize="24dp"
-                android:textStyle="bold"
-                app:cornerRadius="15dp"
-                app:layout_constraintBottom_toTopOf="@+id/cta_complete_profile"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/cta_complete_profile"
-                android:layout_width="0dp"
-                android:layout_height="70dp"
-                android:layout_marginTop="10dp"
-                android:backgroundTint="#47AE7A"
-                android:fontFamily="@font/roboto_bold"
-                android:text="COMPLETE PROFILE"
+                android:text="OPEN PROFILE"
                 android:textAppearance="@style/TextAppearance.AppCompat"
                 android:textSize="24dp"
                 android:textStyle="bold"
@@ -111,7 +93,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cta_profile" />
+                app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
