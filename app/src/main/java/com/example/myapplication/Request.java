@@ -1,16 +1,15 @@
 package com.example.myapplication;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
@@ -46,29 +45,35 @@ public class Request {
     public static class Response {
 
         private final int m_code;
-        private final JSONObject m_data;
+        private final JSONArray m_data;
 
-        public Response(int code, JSONObject message ){
+        public Response( int code, JSONArray message ){
             m_code = code;
             m_data = message;
         }
 
+        public int length() { return m_data.length(); }
         public int getCode() {
             return m_code;
         }
 
-        public JSONObject getData() {
-            return m_data;
+        public JSONObject getData( int index ) {
+            try {
+                return m_data.getJSONObject( index );
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }
 
-        public String getString( String name ){
+        public String getString( int index, String name ){
             try {
-                return getData().getString( name );
+                return getData( index ).getString( name );
             } catch (JSONException e) {
                 return null;
             }
         }
     }
+
 
     static public Response post( String url, Request.Body data ){
         try {
@@ -95,7 +100,7 @@ public class Request {
                     response.append(responseLine.trim());
                 }
                 System.out.println(response.toString());
-                return new Response( responseCode, new JSONObject( response.toString() ) );
+                return new Response( responseCode, new JSONArray( response.toString() ) );
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);
@@ -121,7 +126,7 @@ public class Request {
                 while( (responseLine = br.readLine()) != null ){
                     response.append(responseLine.trim());
                 }
-                return new Response( responseCode, new JSONObject( response.toString() ) );
+                return new Response( responseCode, new JSONArray( response.toString() ) );
 
             } catch (JSONException e) {
                 throw new RuntimeException(e);
