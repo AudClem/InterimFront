@@ -33,9 +33,9 @@ public class RegisterActivity extends AppCompatActivity {
             Request.Response res = signUp(usernameStr, mailStr, passwordStr);
 
             System.out.println("Response code : " + res.getCode());
-            System.out.println("Message : " + res.getString("message") );
+            System.out.println("Message : " + res.getString( 0,"message") );
             if( res.getCode() == 201 ){
-                userID = res.getString("id");
+                userID = res.getString( 0,"id");
 
                 Intent intent = new Intent (this, RegisterCheckActivity.class);
                 intent.putExtra("userID", userID );

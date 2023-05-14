@@ -28,11 +28,11 @@ public class LoginActivity extends AppCompatActivity {
             String passwordStr = String.valueOf( password.getText() );
 
             Request.Response res = login( mailStr, passwordStr );
-            System.out.println( res.getString("message") );
+            System.out.println( res.getString( 0,"message") );
 
             if( res.getCode() == 200 ){
                 Intent intent = new Intent (this, OfferActivity.class);
-                intent.putExtra("userID", res.getString("id") );
+                intent.putExtra("userID", res.getString( 0,"id") );
                 startActivity(intent);
             }
 
