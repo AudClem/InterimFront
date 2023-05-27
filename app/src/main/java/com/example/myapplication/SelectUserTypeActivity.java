@@ -11,6 +11,8 @@ import android.widget.ImageView;
 
 public class SelectUserTypeActivity extends AppCompatActivity {
 
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,6 +20,10 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_select_user_type);
 
         Intent intent = new Intent (this, RegisterUserTypeActivity.class);
+        Bundle extras = getIntent().getExtras();
+        if( extras != null ){
+            userID = extras.getString("userID");
+        }
 
         ConstraintLayout seeker = findViewById(R.id.seeker);
         ConstraintLayout employer = findViewById(R.id.employer);
@@ -52,6 +58,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         });
 
         next.setOnClickListener( event -> {
+            intent.putExtra("userID", userID );
             startActivity(intent);
         });
 
