@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -14,6 +16,10 @@ import java.util.Arrays;
 import java.util.List;
 
 public class RegisterUserTypeActivity extends AppCompatActivity {
+
+    private final int JOB_SEEKER = 1;
+    private final int EMPLOYER = 1;
+    private final int AGENCY = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +41,23 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
         Button cta_signUp = findViewById(R.id.cta);
 
-        if(choice == 1) {
-            //Job Seeker
+        if(choice == JOB_SEEKER) {
             title.setText("Job Seeker");
-            nomList.addAll(Arrays.asList("First Name", "Last Name", "Job Title", "Location", "Start", "Employer"));
-            nomListImg.addAll(Arrays.asList(R.drawable.user, R.drawable.user, R.drawable.bag, R.drawable.location, R.drawable.calendar, R.drawable.employersvg));
-            sousnomList.addAll(Arrays.asList("Start", "End"));
-            sousnomListImg.addAll(Arrays.asList(R.drawable.calendar, R.drawable.calendar));
-
+            nomList.addAll(Arrays.asList("First Name", "Last Name", "Birthday (yyyy-mm-dd)", "Location", "Nationnality"));
+            nomListImg.addAll(Arrays.asList(R.drawable.user, R.drawable.user, R.drawable.user, R.drawable.location, R.drawable.user));
         }
-        else if (choice == 2) {
-            //Employer
+        else if (choice == EMPLOYER) {
             title.setText("Employer");
             nomList.addAll(Arrays.asList("Business Name", "Department Name", "National Number", "Name #1", "Name #2", "First Phone Number", "Second Phone Number"));
             nomListImg.addAll(Arrays.asList(R.drawable.business, R.drawable.business, R.drawable.id, R.drawable.user, R.drawable.user, R.drawable.phone, R.drawable.phone));
         }
-        else if (choice == 3) {
-            //Agency
+        else if (choice == AGENCY) {
             title.setText("Agency");
             nomList.addAll(Arrays.asList("Agency Name", "National Number", "Name #1", "Name #2", "First Phone Number", "Second Phone Number"));
             nomListImg.addAll(Arrays.asList(R.drawable.business, R.drawable.id, R.drawable.user, R.drawable.user, R.drawable.phone, R.drawable.phone));
         }
 
-        ListView listv;
-        listv = (ListView) findViewById(R.id.customListView);
+        ListView listv = (ListView) findViewById(R.id.customListView);
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(getApplicationContext(), nomList, nomListImg, sousnomList, sousnomListImg);
         listv.setAdapter(customBaseAdapter);
 
@@ -67,9 +66,29 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         });
 
         cta_signUp.setOnClickListener( event -> {
-            Intent intent = new Intent (this, RegisterCheckFinalActivity.class);
-            startActivity(intent);
+            String userId = bundle.getString("userID");
+
+
+
+
         });
 
+    }
+
+    private Request.Response signUpPlus( int userType, Request.Body data ){
+        String url="http://10.0.2.2:5000/aut/";
+
+        if( userType == JOB_SEEKER ) url += "signup-jobseeker";
+        else if( userType == EMPLOYER || userType == AGENCY ) url += "signup-sub";
+
+        return Request.post( url, data );
+    }
+
+    private String getDataFromListv( ListView listv, int index ){
+        View v;
+        EditText et;
+        v = listv.getChildAt( index );
+        et = (EditText) v.findViewById(R.id.text);
+        return et.getText().toString();
     }
 }

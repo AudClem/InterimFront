@@ -49,24 +49,11 @@ public class CustomBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int i, View convertView, ViewGroup viewGroup) {
 
-        if (getItem(0)== "First Name" && i==4){
-            convertView = inflater.inflate(R.layout.activity_custom_list_view_c, null);
-            EditText edtxt = (EditText) convertView.findViewById(R.id.text);
-            ImageView imgv = (ImageView) convertView.findViewById(R.id.icon);
-            EditText edtxt2 = (EditText) convertView.findViewById(R.id.text2);
-            ImageView imgv2 = (ImageView) convertView.findViewById(R.id.icon2);
-            edtxt.setHint(souslistN.get(0));
-            imgv.setImageResource(sousimageN.get(0));
-            edtxt2.setHint(souslistN.get(1));
-            imgv2.setImageResource(sousimageN.get(1));
-        }
-        else{
-            convertView = inflater.inflate(R.layout.activity_custom_list_view, null);
-            EditText edtxt = (EditText) convertView.findViewById(R.id.text);
-            ImageView imgv = (ImageView) convertView.findViewById(R.id.icon);
-            edtxt.setHint(listN.get(i));
-            imgv.setImageResource(imageN.get(i));
-        }
+        convertView = inflater.inflate(R.layout.activity_custom_list_view, null);
+        EditText edtxt = (EditText) convertView.findViewById(R.id.text);
+        ImageView imgv = (ImageView) convertView.findViewById(R.id.icon);
+        edtxt.setHint(listN.get(i));
+        imgv.setImageResource(imageN.get(i));
 
         return convertView;
     }
