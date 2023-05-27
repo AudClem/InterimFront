@@ -70,6 +70,5 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
             Intent intent = new Intent (this, RegisterCheckFinalActivity.class);
             startActivity(intent);
         });
-
     }
 }

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,11 +17,12 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class OfferActivity extends AppCompatActivity {
+public class OfferActivity extends AppCompatActivity implements RecyclerInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,13 @@ public class OfferActivity extends AppCompatActivity {
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         setContentView(R.layout.activity_offer);
 
-        //Button test = findViewById(R.id.button);
-        // test.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View view) {
-              //  showDialog();
-            //}
-        //});
+        ConstraintLayout recommended = findViewById(R.id.r_info_offer);
+         recommended.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDialog();
+            }
+        });
 
         RecyclerView rc = findViewById(R.id.recyclerview);
         List<ItemOffer> items = new ArrayList<ItemOffer>();
@@ -45,7 +47,8 @@ public class OfferActivity extends AppCompatActivity {
         items.add(new ItemOffer("Lorem INC.", "Lorem Ipsum",R.drawable.print, "$1500/m -", "Auburn, Alabama", R.drawable.greenstar));
 
         rc.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        rc.setAdapter(new CustomAdaptaterRecycler(getApplicationContext(), items));
+        // ajouté this
+        rc.setAdapter(new CustomAdaptaterRecycler(getApplicationContext(), items, this));
 
 
 
@@ -55,6 +58,7 @@ public class OfferActivity extends AppCompatActivity {
             System.out.println( "userid : " + userId );
         }
     }
+
 
     private void showDialog() {
         final Dialog dialog = new Dialog(this);
@@ -66,5 +70,11 @@ public class OfferActivity extends AppCompatActivity {
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        // grace a la position en parametre, on pourra afficher un modal contenant differentes info selon la position de l'item cliqué. Probablement en utilisant des listes toujours.
+        showDialog();
     }
 }

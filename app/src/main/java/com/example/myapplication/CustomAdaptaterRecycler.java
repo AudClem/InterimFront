@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -12,18 +13,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 public class CustomAdaptaterRecycler extends RecyclerView.Adapter<ViewHolderRecycler>{
+    // ajouté
+    private final RecyclerInterface recyclerInterface;
     Context contxt;
     List<ItemOffer> items;
 
-    public CustomAdaptaterRecycler(Context contxt, List<ItemOffer> items) {
+    public CustomAdaptaterRecycler(Context contxt, List<ItemOffer> items, RecyclerInterface recyclerInterface) {
+        this.recyclerInterface = recyclerInterface;
         this.contxt = contxt;
         this.items = items;
     }
 
+    // ajouté recyclerInterface
     @NonNull
     @Override
     public ViewHolderRecycler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new ViewHolderRecycler(LayoutInflater.from(contxt).inflate(R.layout.activity_custom_offer, parent, false));
+        LayoutInflater inflater = LayoutInflater.from(contxt);
+        View view = inflater.inflate(R.layout.activity_custom_offer, parent, false);
+        return new ViewHolderRecycler(view, recyclerInterface);
     }
 
     @Override
@@ -43,7 +50,7 @@ public class CustomAdaptaterRecycler extends RecyclerView.Adapter<ViewHolderRecy
         holder.h_lieu.setTypeface(roboto);
 
     }
-
+    // ajouté
     @Override
     public int getItemCount() {
         return items.size();
