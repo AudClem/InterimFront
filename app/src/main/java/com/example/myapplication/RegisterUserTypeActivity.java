@@ -67,7 +67,30 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
         cta_signUp.setOnClickListener( event -> {
             String userId = bundle.getString("userID");
+            Request.Body data = new Request.Body();
 
+            if( choice == JOB_SEEKER ){
+                data.put("id", userId );
+                data.put("firstname", getDataFromListv(listv, 0) );
+                data.put("lastname", getDataFromListv(listv, 1) );
+                data.put("birthday", getDataFromListv(listv, 2) );
+                data.put("city", getDataFromListv(listv, 3) );
+                data.put("nationality", getDataFromListv(listv, 4) );
+            }
+            else if( choice == EMPLOYER ){
+
+            }
+            else if( choice == AGENCY ){
+
+            }
+
+            Request.Response res = signUpPlus( choice, data );
+
+            if( res.getCode() == 201 ){
+                Intent intent = new Intent (this, RegisterCheckFinalActivity.class);
+                intent.putExtra("userID", userId );
+                startActivity(intent);
+            }
 
 
 
