@@ -121,7 +121,6 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
 
         });
-
     }
 
     private Request.Response signUpPlus( int userType, Request.Body data ){
