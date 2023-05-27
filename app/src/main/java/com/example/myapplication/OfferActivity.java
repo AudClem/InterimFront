@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -24,6 +26,7 @@ import java.util.List;
 
 public class OfferActivity extends AppCompatActivity implements RecyclerInterface {
 
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,9 +57,15 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
 
         Bundle extras = getIntent().getExtras();
         if( extras != null ){
-            String userId = extras.getString("userID");
-            System.out.println( "userid : " + userId );
+            userId = extras.getString("userID");
         }
+
+        ImageView profileimg = findViewById(R.id.profileimg);
+        profileimg.setOnClickListener(event -> {
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra("userId", userId);
+            startActivity(intent);
+        });
     }
 
 
@@ -77,4 +86,5 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
         // grace a la position en parametre, on pourra afficher un modal contenant differentes info selon la position de l'item cliqué. Probablement en utilisant des listes toujours.
         showDialog();
     }
+
 }
