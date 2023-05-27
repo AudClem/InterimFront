@@ -52,8 +52,8 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         }
         else if (choice == AGENCY) {
             title.setText("Agency");
-            nomList.addAll(Arrays.asList("Agency Name", "National Number", "Name #1", "Name #2", "First Phone Number", "Second Phone Number"));
-            nomListImg.addAll(Arrays.asList(R.drawable.business, R.drawable.id, R.drawable.user, R.drawable.user, R.drawable.phone, R.drawable.phone));
+            nomList.addAll(Arrays.asList("National Number", "Last Name #1", "Last Name #2", "mail #2", "Phone Number #1", "Phone Number #2", "Adress", "Agency Name" ));
+            nomListImg.addAll(Arrays.asList(R.drawable.business, R.drawable.user, R.drawable.user, R.drawable.mail, R.drawable.phone, R.drawable.phone, R.drawable.location, R.drawable.business));
         }
 
         for (int i = 0; i < nomList.size(); i++){
@@ -98,7 +98,16 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
                 data.put("type", String.valueOf( choice ) );
             }
             else if( choice == AGENCY ){
-
+                data.put("id", userId );
+                data.put("numberN", getDataFromListv(listv, 0) );
+                data.put("lastname1", getDataFromListv(listv, 1) );
+                data.put("lastname2", getDataFromListv(listv, 2) );
+                data.put("mail2", getDataFromListv(listv, 3) );
+                data.put("phone1", getDataFromListv(listv, 4) );
+                data.put("phone2", "" );
+                data.put("adress", "" );
+                data.put("agencyName", "" );
+                data.put("type", String.valueOf( choice ) );
             }
 
             Request.Response res = signUpPlus( choice, data );
