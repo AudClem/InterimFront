@@ -19,16 +19,13 @@ public class CustomBaseAdapter extends BaseAdapter {
     Context contex;
     List<String> listN;
     List<Integer> imageN;
-    List<String> souslistN;
-    List<Integer> sousimageN;
     LayoutInflater inflater;
 
-    public CustomBaseAdapter(Context ctx, List<String> list, List<Integer> image, List<String> souslist, List<Integer> sousimage){
+    public CustomBaseAdapter(Context ctx, List<String> list, List<Integer> image){
         this.contex = ctx;
         this.listN = list;
         this.imageN = image;
-        this.souslistN = souslist;
-        this.sousimageN = sousimage;
+
         inflater = LayoutInflater.from(ctx);
 
     }
@@ -54,8 +51,10 @@ public class CustomBaseAdapter extends BaseAdapter {
         ImageView imgv = (ImageView) convertView.findViewById(R.id.icon);
         edtxt.setHint(listN.get(i));
         imgv.setImageResource(imageN.get(i));
-
+        System.out.println(listN.get(i));
         return convertView;
     }
+
+
 
 }
