@@ -29,6 +29,7 @@ import java.util.List;
 public class JobSearch extends AppCompatActivity {
 
     private String userId;
+    private String offreId;
     private String searchStr;
 
     @Override
@@ -99,8 +100,9 @@ public class JobSearch extends AppCompatActivity {
 
         Button ctaJob = dialog.findViewById( R.id.ctaJob );
         ctaJob.setOnClickListener( event -> {
-            Intent intent = new Intent (this, PostActivity.class);
+            Intent intent = new Intent (this, JobApplication.class);
             intent.putExtra("userId", userId );
+            intent.putExtra("offreId", item.getString(i, "id_offre"));
             startActivity(intent);
         });
     }

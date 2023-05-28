@@ -6,10 +6,12 @@ public class ItemOffer {
     String titre;
     String salaire;
     String lieu;
+    String id;
     int affiche;
     int etoile;
 
-    public ItemOffer(String sous_titre, String titre, int affiche, String salaire, String lieu, int etoile) {
+    public ItemOffer(String id, String sous_titre, String titre, int affiche, String salaire, String lieu, int etoile) {
+        this.id = id;
         this.sous_titre = sous_titre;
         this.titre = titre;
         this.affiche = affiche;

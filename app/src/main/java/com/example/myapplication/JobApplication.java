@@ -2,6 +2,7 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,7 @@ public class JobApplication extends AppCompatActivity {
         if( extras != null ){
             userId = extras.getString("userId");
             offreId = extras.getString("offreId");
+            System.out.println("##############" + offreId);
         }
 
         Button cta = findViewById( R.id.cta );
@@ -28,6 +30,10 @@ public class JobApplication extends AppCompatActivity {
             if( res.getCode() == 200 ){
                 System.out.println( res.getString(0,"message") );
             }
+
+            Intent intent = new Intent(this, OfferActivity.class);
+            intent.putExtra("userId", userId );
+            startActivity(intent);
         });
     }
 

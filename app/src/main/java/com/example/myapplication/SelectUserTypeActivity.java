@@ -22,7 +22,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         Intent intent = new Intent (this, RegisterUserTypeActivity.class);
         Bundle extras = getIntent().getExtras();
         if( extras != null ){
-            userID = extras.getString("userID");
+            userID = extras.getString("userId");
         }
 
         ConstraintLayout seeker = findViewById(R.id.seeker);
@@ -58,7 +58,7 @@ public class SelectUserTypeActivity extends AppCompatActivity {
         });
 
         next.setOnClickListener( event -> {
-            intent.putExtra("userID", userID );
+            intent.putExtra("userId", userID );
             startActivity(intent);
         });
 

@@ -21,6 +21,8 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
     private final int EMPLOYER = 2;
     private final int AGENCY = 3;
 
+    private String userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +73,8 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
         });
 
         cta_signUp.setOnClickListener( event -> {
-            String userId = bundle.getString("userID");
+            userId = bundle.getString("userId");
+            System.out.println(userId);
             Request.Body data = new Request.Body();
             System.out.println("choice : " + choice);
             System.out.println( listv.getCount()) ;
@@ -114,7 +117,7 @@ public class RegisterUserTypeActivity extends AppCompatActivity {
 
             if( res.getCode() == 201 ){
                 Intent intent = new Intent (this, RegisterCheckFinalActivity.class);
-                intent.putExtra("userID", userId );
+                intent.putExtra("userId", userId );
                 startActivity(intent);
             }
 

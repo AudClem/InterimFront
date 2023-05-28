@@ -31,6 +31,7 @@ public class LoginActivity extends AppCompatActivity {
             System.out.println( res.getString( 0,"message") );
 
             if( res.getCode() == 200 ){
+                System.out.println("Login" + res.getString( 0,"id"));
                 Intent intent = new Intent (this, OfferActivity.class);
                 intent.putExtra("userId", res.getString( 0,"id") );
                 startActivity(intent);

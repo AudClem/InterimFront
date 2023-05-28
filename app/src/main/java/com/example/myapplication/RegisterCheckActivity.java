@@ -20,18 +20,18 @@ public class RegisterCheckActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if( extras != null ){
-            userID = extras.getString("userID");
+            userID = extras.getString("userId");
         }
 
         cta_browsing.setOnClickListener( event -> {
             Intent intent = new Intent (this, OfferActivity.class);
-            intent.putExtra("userID", userID );
+            intent.putExtra("userId", userID );
             startActivity(intent);
         });
 
         cta_complete_profile.setOnClickListener( event -> {
             Intent intent = new Intent (this, SelectUserTypeActivity.class);
-            intent.putExtra("userID", userID );
+            intent.putExtra("userId", userID );
             startActivity(intent);
         });
     }

@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -42,9 +45,11 @@ public class ProfileActivity extends AppCompatActivity {
         if( extras != null ){
             userId = extras.getString("userId");
         }
-        System.out.println("http://10.0.2.2:5000/user?id=" + userId);
         Request.Response res = Request.get("http://10.0.2.2:5000/user?id=" + userId);
         userRole = Integer.parseInt(res.getString( 0,"userRole"));
+
+        String userName = res.getString(0, "username");
+        ((TextView) findViewById(R.id.title)).setText(userName);
 
         if(userRole == SIMPLE_USER) {
             profile.setText("Simple User");
@@ -93,11 +98,19 @@ public class ProfileActivity extends AppCompatActivity {
                 else if( option == "Post" ) intent = new Intent( ProfileActivity.this, PostActivity.class );
 
                 if( intent != null ){
+                    System.out.println("Profile" + userId);
                     intent.putExtra("userId", userId );
                     startActivity(intent);
                 }
 
             }
+
+        });
+
+        TextView logout = findViewById(R.id.logout);
+        logout.setOnClickListener(event -> {
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
         });
 
 

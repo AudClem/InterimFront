@@ -78,6 +78,7 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
 
         ImageView profileimg = findViewById(R.id.profileimg);
         profileimg.setOnClickListener(event -> {
+            System.out.println("Offer" + userId);
             Intent intent = new Intent(this, ProfileActivity.class);
             intent.putExtra("userId", userId);
             startActivity(intent);
@@ -103,8 +104,10 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
 
         Button ctaJob = dialog.findViewById( R.id.ctaJob );
         ctaJob.setOnClickListener( event -> {
-            Intent intent = new Intent (this, PostActivity.class);
+            Intent intent = new Intent (this, JobApplication.class);
+            System.out.println("##################################" + item.id);
             intent.putExtra("userId", userId );
+            intent.putExtra("offreId", item.id);
             startActivity(intent);
         });
     }
@@ -123,9 +126,9 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
             Request.Response offre = Request.get("http://10.0.2.2:5000/offer/?id=" + popular.getString(i, "id" ));
             Request.Response simple_user = Request.get("http://10.0.2.2:5000/user/?id=" + popular.getString(i, "id_utilisateurPayant" ));
             String username = simple_user.getString(0, "username");
-            System.out.println(offre.getString(0, "metier"));
+            System.out.println(popular.getString(i, "id" ));
 
-            items.add(new ItemOffer(username, offre.getString(0, "metier"),R.drawable.print, offre.getString(0, "remuneration") + "€/h", "Montpellier, France", R.drawable.greenstar));
+            items.add(new ItemOffer(popular.getString(i, "id" ), username, offre.getString(0, "metier"),R.drawable.print, offre.getString(0, "remuneration"), "Montpellier, France", R.drawable.greenstar));
 
         }
 

@@ -11,7 +11,7 @@ import android.widget.ImageView;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private String userID = null;
+    private String userID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getSupportActionBar().hide();
@@ -38,7 +38,7 @@ public class RegisterActivity extends AppCompatActivity {
                 userID = res.getString( 0,"id");
 
                 Intent intent = new Intent (this, RegisterCheckActivity.class);
-                intent.putExtra("userID", userID );
+                intent.putExtra("userId", userID );
                 startActivity(intent);
             }
         });
