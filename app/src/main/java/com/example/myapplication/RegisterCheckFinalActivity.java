@@ -8,7 +8,7 @@ import android.widget.Button;
 
 public class RegisterCheckFinalActivity extends AppCompatActivity {
 
-    private String userID;
+    private String userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,12 +19,13 @@ public class RegisterCheckFinalActivity extends AppCompatActivity {
 
         Bundle extras = getIntent().getExtras();
         if( extras != null ){
-            userID = extras.getString("userID");
+            userId = extras.getString("userId");
         }
 
         cta_profile.setOnClickListener( event -> {
-            //TODO redirect to Profile
-            //Intent intent = new Intent (this, OfferActivity.class);
+            Intent intent = new Intent(this, ProfileActivity.class);
+            intent.putExtra("userId", userId);
+            startActivity(intent);
 
         });
     }
