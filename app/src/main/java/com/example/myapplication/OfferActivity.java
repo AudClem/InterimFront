@@ -57,7 +57,8 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
 
         Bundle extras = getIntent().getExtras();
         if( extras != null ){
-            userId = extras.getString("userID");
+            userId = extras.getString("userId");
+            System.out.println("ddffdf" + userId);
         }
 
         ImageView profileimg = findViewById(R.id.profileimg);
