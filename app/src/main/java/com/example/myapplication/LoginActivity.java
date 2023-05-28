@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if( res.getCode() == 200 ){
                 Intent intent = new Intent (this, OfferActivity.class);
-                intent.putExtra("userID", res.getString( 0,"id") );
+                intent.putExtra("userId", res.getString( 0,"id") );
                 startActivity(intent);
             }
 
