@@ -102,14 +102,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/roboto"
+                    android:text="Lorem INC, Auburn, Alabama"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/r_print"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Lorem INC, Auburn, Alabama" />
+                    app:layout_constraintTop_toTopOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -118,9 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="77dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/r_offerLayout">
 
@@ -142,14 +140,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
                     android:fontFamily="@font/roboto"
+                    android:text="Full Time, $1500/m"
                     android:textColor="@color/black"
-                    android:textSize="18dp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/clock"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:text="Full Time, $1500/m" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -160,7 +158,7 @@
             android:layout_height="match_parent"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit.   Pellentesque eleifend, sapien sit amet aliquam finibus, dolor ipsum tristique enim, feugiat aliquet velit odio vitae arcu.  Praesent interdum pellentesque pellentesque. Proin posuere cursus dolor sit amet ullamcorper."
             android:textColor="@color/black"
-            android:textSize="18dp"
+            android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
