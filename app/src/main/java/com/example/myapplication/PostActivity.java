@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class PostActivity extends AppCompatActivity {
@@ -27,6 +28,11 @@ public class PostActivity extends AppCompatActivity {
             if( res.getCode() == 200 ){
                 System.out.println( res.getString(0,"message") );
             }
+        });
+
+        ImageView back = findViewById(R.id.back);
+        back.setOnClickListener( event -> {
+            onBackPressed();
         });
     }
 
