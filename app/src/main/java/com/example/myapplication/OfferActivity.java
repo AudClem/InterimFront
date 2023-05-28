@@ -75,7 +75,7 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
         dialog.setContentView(R.layout.activity_job_detail);
 
         dialog.show();
-        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.75));
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, (int) (Resources.getSystem().getDisplayMetrics().heightPixels * 0.79));
         dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
         dialog.getWindow().setGravity(Gravity.BOTTOM);
