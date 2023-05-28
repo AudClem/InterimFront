@@ -12,11 +12,13 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,6 +41,21 @@ public class OfferActivity extends AppCompatActivity implements RecyclerInterfac
             @Override
             public void onClick(View view) {
                 showDialog();
+            }
+        });
+
+        EditText search = (EditText) findViewById(R.id.search);
+        Intent intent1 = new Intent (this, JobSearch.class);
+        search.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
+                    startActivity(intent1);
+                    return true;
+                }
+
+                return false;
             }
         });
 
